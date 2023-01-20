@@ -6,7 +6,7 @@
             "price": 1109.95,
             "description": "Balde de helado de limón. Contenido Neto: 500g. Unidades x Bulto: 6",
             "category": "baldes",
-            "image": "../../src/resources/products/1_limon_ON-o.png"
+            "image": "../src/resources/products/1_limon_ON-o.png"
         },
         {
             "id": 2,
