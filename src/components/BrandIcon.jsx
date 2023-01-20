@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../resources/logo.png';
+import logo from '/resources/logo.png';
 
 function BrandExample() {
     return (
