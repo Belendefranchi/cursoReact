@@ -7,9 +7,9 @@ function BasicExample({title, price, description, category, image}) {
       <Card style={{ width: '20rem', height: '38rem', margin: '1rem' }}>
         <Card.Img variant="top" src={image} />
         <Card.Body style={{ paddingBottom: '0rem', paddingTop: '0rem' }}>
-          <Link to={`${title}`}>
-            <h3>{title}</h3>
-          </Link>
+          <Card.Title>
+            <Link to={`${title}`}>{title}</Link>
+          </Card.Title>
           <Card.Text>
             <p style={{ height: '5rem'}}>{description}</p>
             <h4>${price}</h4>
