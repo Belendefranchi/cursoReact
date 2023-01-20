@@ -21,25 +21,37 @@ function BasicExample() {
           <Navbar.Collapse className="text-end" id="basic-navbar-nav">
             <Nav className="m-4">
               <NavDropdown title="Nuestros Productos" id="basic-nav-dropdown">
-{/*                 <Link to='/productos/servido'>
-                  <h6 className="dropdown-item">Servido</h6>
-                </Link> */}
-                <Link to='/productos/baldes'>
-                  <h6 className="dropdown-item">Baldes</h6>
-                </Link>
-                <Link to='/productos/postres'>
-                  <h6 className="dropdown-item">Postres</h6>
-                </Link>
-                <Link to='/productos/impulsivos'>
-                  <h6 className="dropdown-item">Impulsivos</h6>
-                </Link>
-{/*                 <Link to='/productos/cafeteria'>
-                  <h6 className="dropdown-item">Cafetería</h6>
-                </Link> */}
+{/*           <NavDropdown.Item                 
+                  <Link to='/productos/servido'>
+                    <h6 className="dropdown-item">Servido</h6>
+                  </Link>
+                </NavDropdown.Item> */}
+                <NavDropdown.Item>
+                  <Link to='/productos/baldes'>
+                    <h6 className="dropdown-item">Baldes</h6>
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to='/productos/postres'>
+                    <h6 className="dropdown-item">Postres</h6>
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to='/productos/impulsivos'>
+                    <h6 className="dropdown-item">Impulsivos</h6>
+                  </Link>
+                </NavDropdown.Item>
+{/*             <NavDropdown.Item>
+                  <Link to='/productos/cafeteria'>
+                    <h6 className="dropdown-item">Cafetería</h6>
+                  </Link> 
+                </NavDropdown.Item> */}
                 <NavDropdown.Divider />
-                <Link to='/productos'>
-                  <h6 className="dropdown-item">Ver todos</h6>
-                </Link>
+                <NavDropdown.Item>
+                  <Link to='/productos'>
+                    <h6 className="dropdown-item">Ver todos</h6>
+                  </Link>
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link>Nuestros Locales</Nav.Link>
               <Nav.Link>Sobre Nosotros</Nav.Link>
