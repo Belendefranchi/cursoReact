@@ -1,12 +1,15 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 function BasicExample({title, price, description, category, image}) {
   return (
       <Card style={{ width: '20rem', height: '38rem', margin: '1rem' }}>
         <Card.Img variant="top" src={image} />
         <Card.Body style={{ paddingBottom: '0rem', paddingTop: '0rem' }}>
-          <Card.Title>{title}</Card.Title>
+          <Link to={`${title}`}>
+            <h3>{title}</h3>
+          </Link>
           <Card.Text>
             <p style={{ height: '5rem'}}>{description}</p>
             <h4>${price}</h4>
