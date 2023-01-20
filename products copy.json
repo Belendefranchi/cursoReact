@@ -1,0 +1,168 @@
+{
+    "baldes": [
+        {
+            "id": 1,
+            "title": "Balde 1 litro",
+            "price": 1109.95,
+            "description": "Balde de helado de limón. Contenido Neto: 500g. Unidades x Bulto: 6",
+            "category": "baldes",
+            "image": "../../src/resources/products/1_limon_ON-o.png"
+        },
+        {
+            "id": 2,
+            "title": "Balde 3 litros",
+            "price": 1209.95,
+            "description": "Balde de helado de chocolate, chantilly con frutilla, banana split y vainilla. Contenido Neto: 1,5 kg",
+            "category": "baldes",
+            "image": "../../src/resources/products/3_bvcc_ON-o.png"
+        },
+        {
+            "id": 3,
+            "title": "Balde 3 y 5 litros",
+            "price": 1309.95,
+            "description": "Balde de helado de chocolate, dulce de leche granizado, frutilla y americana. Contenido Neto: 1,5 kg y 2,5 kg.",
+            "category": "baldes",
+            "image": "../../src/resources/products/3_facd_ON-1.png"
+        },
+        {
+            "id": 4,
+            "title": "Balde 3 y 5 litros",
+            "price": 1309.95,
+            "description": "Balde de helado de flan, dulce de leche, frutilla y granizado. Contenido Neto: 1,5 kg y 2,5 kg.",
+            "category": "baldes",
+            "image": "../../src/resources/products/3_fgfd_ON-1.png"
+        }
+    ],
+    "postres": [
+        {
+            "id": 5,
+            "title": "Suizo",
+            "price": 1409.95,
+            "description": "Helado de dulce de leche y americana cubierto con baño de repostería. Contenido Neto: 100 g. Unidades x Bulto: 6 unidades.",
+            "category": "postres",
+            "image": "../../src/resources/products/suizo-caja_on.png"
+        },
+        {
+            "id": 6,
+            "title": "Mixto",
+            "price": 1409.95,
+            "description": "Helado sabor frutilla, vainilla y chocolate. Contenido Neto: 78 g. Unidades x Bulto: 6 unidades.",
+            "category": "postres",
+            "image": "../../src/resources/products/mixto-mixto_on.png"
+        },
+        {
+            "id": 7,
+            "title": "Escocés",
+            "price": 1409.95,
+            "description": "Helado de chocolate y americana relleno con dulce de leche, baño de repostería y crocante de maní sabor almendra. Contenido Neto: 98 g. Unidades x Bulto: 6 unidades.",
+            "category": "postres",
+            "image": "../../src/resources/products/escoces-cajas_on.png"
+        },
+        {
+            "id": 8,
+            "title": "Almendrado",
+            "price": 1409.95,
+            "description": "Helado sabor almendra con maní crocante sabor almendras. Contenido Neto: 98 g. Unidades x Bulto: 6 unidades.",
+            "category": "postres",
+            "image": "../../src/resources/products/almendrado-caja_on.png"
+        }
+    ],
+    "impulsivos": [
+        {
+            "id": 9,
+            "title": "Tuo",
+            "price": 109.95,
+            "description": "Helado de dulce de leche relleno de dulce de leche cubierto de baño de repostería en cono americano. Contenido Neto: 85 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/tuo_ddl_ON.png"
+        },
+        {
+            "id": 10,
+            "title": "Tuo",
+            "price": 109.95,
+            "description": "Helado de chocolate relleno de dulce de leche cubierto de baño de repostería fantasía blanco en cono americano. Contenido Neto: 85 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/tuo_bl_ON.png"
+        },
+        {
+            "id": 11,
+            "title": "Tuo",
+            "price": 109.95,
+            "description": "Helado de americana relleno de dulce de leche cubierto de baño de repostería en cono americano. Contenido Neto: 85 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/tuo_ch_ON.png"
+        },
+        {
+            "id": 12,
+            "title": "Cuore",
+            "price": 109.95,
+            "description": "Helado de vainilla cubierto con baño de repostería con leche, almendras y crocante de maní. Contenido Neto: 75 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/cuore_ch_ON.png"
+        },
+        {
+            "id": 13,
+            "title": "Cuore",
+            "price": 109.95,
+            "description": "Helado de chocolate cubierto con baño de repostería de chocolate blanco. Contenido Neto: 75 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/cuore_b_ON-1.png"
+        },
+        {
+            "id": 14,
+            "title": "Cuore",
+            "price": 109.95,
+            "description": "Helado de frutilla cubierto con baño de repostería de chocolate blanco. Contenido Neto: 75 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/cuore_f_ON-1.png"
+        },
+        {
+            "id": 15,
+            "title": "Cabito Mixto",
+            "price": 109.95,
+            "description": "Helado frutilla y crema de cielo. Contenido Neto: 48 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/cabito_f._ON-1.png"
+        },
+        {
+            "id": 16,
+            "title": "Cabito Mixto",
+            "price": 109.95,
+            "description": "Helado de dulce de leche y chocolate. Contenido Neto: 48 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/cabito_ch_ON-1.png"
+        },
+        {
+            "id": 17,
+            "title": "DO2",
+            "price": 109.95,
+            "description": "Helado de agua sabor frutilla relleno de helado de crema americana. Contenido Neto: 45 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/do2_ON.png"
+        },
+        {
+            "id": 18,
+            "title": "Up",
+            "price": 109.95,
+            "description": "Helado de agua sabor uva y tutti frutti. Contenido Neto: 55 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/up_ON.png"
+        },
+        {
+            "id": 19,
+            "title": "Summun Mix",
+            "price": 109.95,
+            "description": "Helado de agua sabor limón y frutilla. Producto Sin TACC – Apto para celíacos. Contenido Neto: 68 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/summun_mix_2_ON.png"
+        },
+        {
+            "id": 20,
+            "title": "Summun Mix",
+            "price": 109.95,
+            "description": "Helado de agua sabor ananá y naranja. Producto Sin TACC – Apto para celíacos. Contenido Neto: 68 g.",
+            "category": "impulsivos",
+            "image": "../../src/resources/products/summun_mix_1_ON-1.png"
+        }
+    ]
+}
