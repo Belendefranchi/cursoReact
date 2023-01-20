@@ -6,7 +6,7 @@ import { Link, NavLink, Route, Routes, Navigate } from "react-router-dom";
 import BrandIcon from './BrandIcon';
 import CartWidget from './CartWidget';
 import ItemListContainer from './ItemListContainer';
-import products from "/public/products.json";
+import products from "/src/products.json";
 
 
 function BasicExample() {
@@ -50,6 +50,7 @@ function BasicExample() {
         </Container>
       </Navbar>
       <Routes>
+        {/* <Route path="*" element={<Navigate to="/" />} /> */}
         <Route 
           path="/productos/baldes"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
