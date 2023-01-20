@@ -6,6 +6,7 @@ import { Link, NavLink, Route, Routes, Navigate } from "react-router-dom";
 import BrandIcon from './BrandIcon';
 import CartWidget from './CartWidget';
 import ItemListContainer from './ItemListContainer';
+import ItemDetail from './ItemDetail';
 import products from "../../products.json";
 
 
@@ -57,15 +58,33 @@ function BasicExample() {
           </div>} 
         />
         <Route 
+          path="/productos/baldes/:title"
+          element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
+            <ItemDetail data={data}/>
+          </div>} 
+        />
+        <Route 
           path="/productos/postres"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
             <ItemListContainer category={postres}/>
           </div>} 
         />
         <Route 
+          path="/productos/postres/:title"
+          element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
+            <ItemDetail data={data}/>
+          </div>} 
+        />
+        <Route 
           path="/productos/impulsivos"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
             <ItemListContainer category={impulsivos}/>
+          </div>} 
+        />
+        <Route 
+          path="/productos/impulsivos/:title"
+          element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
+            <ItemDetail data={data}/>
           </div>} 
         />
         <Route
@@ -81,6 +100,12 @@ function BasicExample() {
             <ItemListContainer category={impulsivos}/>
           </div>
         </div>}
+        />
+        <Route 
+          path="/productos/:title"
+          element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
+            <ItemDetail data={data}/>
+          </div>} 
         />
       </Routes>
     </>
