@@ -29,6 +29,14 @@ function App() {
       <Routes>
         <Route path="/cursoReact" element={<Carousel />} />
       </Routes>
+      {products.map((product) => {
+        return (
+          <>
+            <p>{product.title}</p>
+            <p>{product.price}</p>
+          </>
+        )
+      })}
       <Footer />
     </div>
   )
