@@ -56,6 +56,9 @@ function BasicExample() {
               <Nav.Link>Nuestros Locales</Nav.Link>
               <Nav.Link>Sobre Nosotros</Nav.Link>
               <Nav.Link>Contacto</Nav.Link>
+              <Nav.Link>
+                <Link to='/cursoReact/products'>Products</Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <CartWidget />

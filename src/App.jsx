@@ -1,42 +1,48 @@
 import './App.css'
+import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../db/firebase-config'
 import NavBar from './components/NavBar'
 import Carousel from './components/Carousel'
-import { Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer'
-import { useState } from 'react'
-import { db } from "../db/firebase-config";
-import { collection, getDocs } from 'firebase/firestore'
-import { useEffect } from 'react'
+import Grid from './components/Grid'
+import ItemDetail2 from './components/itemDetail2'
 
 function App() {
   const [products, setProducts] = useState([]);
   const productsCollectionRef = collection(db, "products");
+  const [loading, setLoading] = useState(true);
 
   const getProducts = async () => {
     const querySnapshot = await getDocs(productsCollectionRef);
-    const docs = querySnapshot.docs.map((doc) => doc.data());
-    console.log(docs);
+    //const docs = querySnapshot.docs.map((doc) => doc.data());
+    //agrego la propiedad id con map
+    const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
     setProducts(docs);
+    setLoading(false);
   };
 
   useEffect(() => {
       getProducts();
   }, []);
 
+  if (loading) {
+    return <h1>Cargando...</h1>
+  }
+
+  console.log(products);
+  
   return (
     <div className="App">
       <NavBar />
       <Routes>
         <Route path="/cursoReact" element={<Carousel />} />
+        <Route path="/cursoReact/products" element={<Grid products={products} setProducts={setProducts} />} />
+        <Route path="/cursoReact/products/:id" element={<ItemDetail2 />} />
+        <Route path='*' element={<h4>404</h4>} />
       </Routes>
-      {products.map((product) => {
-        return (
-          <>
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-          </>
-        )
-      })}
+      {/* <Grid products={products} /> */}
       <Footer />
     </div>
   )
