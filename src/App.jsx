@@ -1,7 +1,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../db/firebase-config'
 import NavBar from './components/NavBar'
 import Carousel from './components/Carousel'
@@ -23,6 +23,12 @@ function App() {
     setLoading(false);
   };
 
+  const deleteProduct = async (id) => {
+    const productDocRef = doc(db, "products", id);
+    await deleteDoc(productDocRef);
+    getProducts();
+  }
+
   useEffect(() => {
       getProducts();
   }, []);
@@ -38,7 +44,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/cursoReact" element={<Carousel />} />
-        <Route path="/cursoReact/products" element={<Grid products={products} setProducts={setProducts} />} />
+        <Route path="/cursoReact/products" element={<Grid products={products} setProducts={setProducts} deleteProduct={deleteProduct}/>} />
         <Route path="/cursoReact/products/:id" element={<ItemDetail2 />} />
         <Route path='*' element={<h4>404</h4>} />
       </Routes>
