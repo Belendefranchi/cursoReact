@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-function BasicExample({title, price, description, category, image}) {
+function ProductsCards({title, price, description, category, image}) {
   return (
       <Card style={{ width: '20rem', height: '38rem', margin: '1rem' }}>
         <Card.Img variant="top" src={image} />
@@ -20,4 +20,4 @@ function BasicExample({title, price, description, category, image}) {
   );
 }
 
-export default BasicExample;
+export default ProductsCards;

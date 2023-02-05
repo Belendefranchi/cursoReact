@@ -9,7 +9,7 @@ import ItemListContainer from '../ItemListContainer';
 import products from "/src/products.json";
 
 
-function BasicExample() {
+function NavBar() {
   const { baldes, postres, impulsivos } = products;
   return (
     <>
@@ -27,17 +27,17 @@ function BasicExample() {
                   </Link>
                 </NavDropdown.Item> */}
                 <NavDropdown.Item>
-                  <Link to='/productos/baldes'>
+                  <Link to='/cursoReact/productos/baldes'>
                     <h6 className="dropdown-item">Baldes</h6>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to='/productos/postres'>
+                  <Link to='/cursoReact/productos/postres'>
                     <h6 className="dropdown-item">Postres</h6>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to='/productos/impulsivos'>
+                  <Link to='/cursoReact/productos/impulsivos'>
                     <h6 className="dropdown-item">Impulsivos</h6>
                   </Link>
                 </NavDropdown.Item>
@@ -48,7 +48,7 @@ function BasicExample() {
                 </NavDropdown.Item> */}
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Link to='/productos'>
+                  <Link to='/cursoReact/productos'>
                     <h6 className="dropdown-item">Ver todos</h6>
                   </Link>
                 </NavDropdown.Item>
@@ -67,7 +67,7 @@ function BasicExample() {
       <Routes>
         {/* <Route path="*" element={<Navigate to="/" />} /> */}
         <Route 
-          path="/productos/baldes"
+          path="/cursoReact/productos/baldes"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
             <ItemListContainer category={baldes}/>
           </div>} 
@@ -79,19 +79,19 @@ function BasicExample() {
           </div>} 
         /> */}
         <Route 
-          path="/productos/postres"
+          path="/cursoReact/productos/postres"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
             <ItemListContainer category={postres}/>
           </div>} 
         />
         <Route 
-          path="/productos/impulsivos"
+          path="/cursoReact/productos/impulsivos"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
             <ItemListContainer category={impulsivos}/>
           </div>} 
         />
         <Route
-          path="/productos"
+          path="/cursoReact/productos"
           element={<div className='d-flex flex-wrap justify-content-center align-items-center'>
           <div className='d-flex flex-wrap justify-content-center align-items-center'>
             <ItemListContainer category={baldes}/>
@@ -109,4 +109,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default NavBar;
