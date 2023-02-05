@@ -8,7 +8,7 @@ function ItemListContainer({ category }) {
       title={title}
       price={price}
       description={description}
-      category={category}
+      /* category={category} */
       image={image}
     />
   ));
