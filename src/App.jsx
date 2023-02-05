@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../db/firebase-config'
-import NavBar from './components/NavBar'
+import NavBar from './components/Navbar/NavBar'
 import Carousel from './components/Carousel'
 import Footer from './components/Footer'
 import Grid from './components/Grid'
 import ItemDetail2 from './components/itemDetail2'
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -44,6 +45,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/cursoReact" element={<Carousel />} />
+        <Route path="/cursoReact/productos/baldes" element={<ItemListContainer category="baldes" />} />
         <Route path="/cursoReact/products" element={<Grid products={products} setProducts={setProducts} deleteProduct={deleteProduct}/>} />
         <Route path="/cursoReact/products/:id" element={<ItemDetail2 />} />
         <Route path='*' element={<h4>404</h4>} />

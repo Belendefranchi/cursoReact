@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Form from './Form'
+import Form from './Form/Form'
 import Item from './Item'
 import styles from './Grid.module.css'
 

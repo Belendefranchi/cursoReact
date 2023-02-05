@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, NavLink, Route, Routes, Navigate } from "react-router-dom";
 import BrandIcon from './BrandIcon';
 import CartWidget from './CartWidget';
-import ItemListContainer from './ItemListContainer';
+import ItemListContainer from '../ItemListContainer';
 import products from "/src/products.json";
 
 
