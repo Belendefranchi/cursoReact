@@ -47,7 +47,7 @@ function NavBar() {
                 </NavDropdown.Item> */}
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Link to='/productos'>
+                  <Link to='/productos/todos'>
                     <h6 className="dropdown-item">Ver todos</h6>
                   </Link>
                 </NavDropdown.Item>
@@ -56,10 +56,10 @@ function NavBar() {
               <Nav.Link>Sobre Nosotros</Nav.Link>
               <Nav.Link>Contacto</Nav.Link>
               <Nav.Link>
-                <Link to='/products'>Nuestros Productos</Link>
+                <Link to='/productos'>Nuestros Productos</Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to='/modify'>Modificar Productos</Link>
+                <Link to='/modificar'>Modificar Productos</Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

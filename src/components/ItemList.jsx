@@ -2,15 +2,15 @@ import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 
 const ItemList = ( { product } ) => {
+
     return (
-        <Card style={{ width: '20rem', height: '38rem', margin: '1rem' }}>
+        <Card style={{ width: '20rem', height: '40rem', margin: '1rem' }}>
             <Card.Img className='img-fluid' variant="top" src={product.image} />
-            <Card.Body style={{ paddingBottom: '0rem', paddingTop: '0rem' }}>
+            <Card.Body>
                 <Card.Title>{product.title}</Card.Title>
-                <Card.Text>
-                    <p style={{ height: '5rem'}}>{product.description}</p>
-                    <h4>$ {product.price}</h4>
-                </Card.Text>
+                <Card.Text className='p-1' style={{ height: '6rem', margin: '1rem' }}>{product.description}</Card.Text>
+                <Card.Title>$ {product.price}</Card.Title>
+                <Button variant="primary">Agregar al carrito</Button>
             </Card.Body>
         </Card>
     )
