@@ -8,18 +8,19 @@ import CartWidget from './CartWidget';
 
 
 function NavBar() {
-  /* const { baldes, postres, impulsivos } = products; */
   
   return (
     <>
       <Navbar bg="light" expand="lg">
         <BrandIcon />
-        <Container>
-          <Navbar.Brand>Heladerías Yummy</Navbar.Brand>
+        <Container className="m-4">
+        <Link to='/'>
+          <Navbar.Brand className='text-secondary fw-bold border-bottom'>Heladerías Yummy</Navbar.Brand>
+        </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse className="text-end" id="basic-navbar-nav">
-            <Nav className="m-4">
-              <NavDropdown title="Nuestros Productos" id="basic-nav-dropdown">
+          <Navbar.Collapse className='justify-content-end text-end' id="basic-navbar-nav">
+            <Nav>
+              <NavDropdown className='text-secondary fw-bold' title="Nuestros Productos" id="basic-nav-dropdown">
 {/*           <NavDropdown.Item                 
                   <Link to='/productos/servido'>
                     <h6 className="dropdown-item">Servido</h6>
@@ -48,23 +49,26 @@ function NavBar() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
                   <Link to='/productos/todos'>
-                    <h6 className="dropdown-item">Ver todos</h6>
+                    <h6 className='dropdown-item fw-bold'>Ver todos</h6>
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link>Nuestros Locales</Nav.Link>
-              <Nav.Link>Sobre Nosotros</Nav.Link>
-              <Nav.Link>Contacto</Nav.Link>
               <Nav.Link>
-                <Link to='/productos'>Nuestros Productos</Link>
+                <Link to='/locales' className='link-secondary fw-bold'>Nuestros Locales</Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to='/modificar'>Modificar Productos</Link>
+                <Link to='/nosotros' className='link-secondary fw-bold'>Sobre Nosotros</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to='/contacto' className='link-secondary fw-bold'>Contacto</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to='/modificar' className='link-secondary fw-bold'>Modificar Productos</Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <CartWidget />
         </Container>
+        <CartWidget />
       </Navbar>
     </>
   );

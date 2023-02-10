@@ -2,7 +2,7 @@
     "baldes": [
         {
             "title": "Balde 1 litro",
-            "price": 1109.95,
+            "price": 11509.95,
             "description": "Balde de helado de limón. Contenido Neto: 500g. Unidades x Bulto: 6",
             "category": "baldes",
             "image": "/resources/products/1_limon_ON-o.png"
@@ -48,21 +48,21 @@
     "impulsivos": [
         {
             "title": "Tuo",
-            "price": 109.95,
+            "price": 1509.95,
             "description": "Helado de dulce de leche relleno de dulce de leche cubierto de baño de repostería en cono americano. Contenido Neto: 85 g.",
             "category": "impulsivos",
             "image": "/resources/products/tuo_ddl_ON.png"
         },
         {
             "title": "Cabito Mixto",
-            "price": 109.95,
+            "price": 1509.95,
             "description": "Helado frutilla y crema de cielo. Contenido Neto: 48 g.",
             "category": "impulsivos",
             "image": "/resources/products/cabito_f._ON-1.png"
         },
         {
             "title": "DO2",
-            "price": 109.95,
+            "price": 1509.95,
             "description": "Helado de agua sabor frutilla relleno de helado de crema americana. Contenido Neto: 45 g.",
             "category": "impulsivos",
             "image": "/resources/products/do2_ON.png"

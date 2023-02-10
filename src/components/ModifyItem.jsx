@@ -1,19 +1,14 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 
-const Item = ( { product, setProduct, deleteProduct } ) => {
+const ModifyItem = ( { product, deleteProduct } ) => {
     return (
-        <Card style={{ width: '20rem', height: '38rem', margin: '1rem' }}>
-            <Card.Img variant="top" src={product.image} />
-            <Card.Body style={{ paddingBottom: '0rem', paddingTop: '0rem' }}>
-                <Card.Title>
-                    <Link to={`${product.title}`}>{product.title}</Link>
-                </Card.Title>
-                <Card.Text>
-                    <p style={{ height: '5rem'}}>{product.description}</p>
-                    <h4>${product.price}</h4>
-                </Card.Text>
+        <Card style={{ width: '20rem', height: '40rem', margin: '1rem' }}>
+            <Card.Img className='img-fluid' variant="top" src={product.image} />
+            <Card.Body>
+                <Card.Title>{product.title}</Card.Title>
+                <Card.Text className='p-1' style={{ height: '6rem', margin: '1rem' }}>{product.description}</Card.Text>
+                <Card.Title>$ {product.price}</Card.Title>
                 <Button className="m-1" variant="primary">Modificar</Button>
                 <Button className="m-1" variant="primary" onclick={deleteProduct}>Eliminar</Button>
             </Card.Body>
@@ -21,7 +16,7 @@ const Item = ( { product, setProduct, deleteProduct } ) => {
     )
 }
 
-export default Item
+export default ModifyItem
 
 /*         <>
             <img src={product.image}></img>

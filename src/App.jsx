@@ -8,7 +8,8 @@ import Carousel from './components/Carousel'
 import Footer from './components/Footer'
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetail from './components/ItemDetail'
-import ModifyProductsList from './components/ModifyProductsList'
+import ModifyProductsList from './components/ModifyItemsList'
+import ModifyItem from './components/ModifyItem'
 
 function App() {
 
@@ -84,6 +85,15 @@ function App() {
 
         <Route path="/productos/impulsivos/:id" 
           element={<ItemDetail />}
+        />
+
+        <Route 
+          path="/productos/todos"
+          element={<>
+            <ItemListContainer products={products} category={"baldes"} />
+            <ItemListContainer products={products} category={"postres"} />
+            <ItemListContainer products={products} category={"impulsivos"} />
+          </>} 
         />
 
         <Route path="/modificar" 

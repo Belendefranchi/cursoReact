@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import Form from './Form/Form'
 import ModifyItem from './ModifyItem'
 
-const ModifyProductsList = ({ products, setProducts, deleteProduct }) => {
+const ModifyProductsList = ({ products, setProducts }) => {
     return (
         <div>
             <Form setProducts={ setProducts } />
-            <div className='d-flex justify-content-center p-4'>
+            <div className='d-flex justify-content-center flex-wrap p-4'>
                 {products.map((product) => {
                     return (
                         <>
