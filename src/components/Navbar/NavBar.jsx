@@ -15,7 +15,7 @@ function NavBar() {
       <Navbar bg="light" expand="lg">
         <BrandIcon />
         <Container className="m-4">
-        <Link to='/'>
+        <Link to='/cursoReact/'>
           <Navbar.Brand className='text-secondary fw-bold border-bottom'>Heladerías Yummy</Navbar.Brand>
         </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,23 +23,23 @@ function NavBar() {
             <Nav>
               <NavDropdown className='text-secondary fw-bold' title="Nuestros Productos" id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to='/productos/baldes'>
+                  <Link to='/cursoReact/productos/baldes'>
                     <h6 className="dropdown-item">Baldes</h6>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to='/productos/postres'>
+                  <Link to='/cursoReact/productos/postres'>
                     <h6 className="dropdown-item">Postres</h6>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to='/productos/impulsivos'>
+                  <Link to='/cursoReact/productos/impulsivos'>
                     <h6 className="dropdown-item">Impulsivos</h6>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Link to='/productos/todos'>
+                  <Link to='/cursoReact/productos/todos'>
                     <h6 className='dropdown-item fw-bold'>Ver todos</h6>
                   </Link>
                 </NavDropdown.Item>
@@ -56,7 +56,7 @@ function NavBar() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <Link to='/carrito'>
+        <Link to='/cursoReact/carrito'>
           <CartWidget />
         </Link>
       </Navbar>

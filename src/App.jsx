@@ -49,41 +49,41 @@ function App() {
         <NavBar />
         <Routes>
           <Route 
-            path="/" 
+            path="/cursoReact/" 
             element={<Carousel />} 
           />
           <Route 
-            path="/productos/baldes"
+            path="/cursoReact/productos/baldes"
             element={<ItemListContainer
               products={products}
               category={"baldes"} />} 
           />
           <Route 
-            path="/productos/baldes/:id" 
+            path="/cursoReact/productos/baldes/:id" 
             element={<ItemDetail />}
           />
           <Route
-            path="/productos/postres"
+            path="/cursoReact/productos/postres"
             element={<ItemListContainer
               products={products}
               category={"postres"} />} 
           />
           <Route 
-            path="/productos/postres/:id" 
+            path="/cursoReact/productos/postres/:id" 
             element={<ItemDetail />}
           />
           <Route 
-            path="/productos/impulsivos"
+            path="/cursoReact/productos/impulsivos"
             element={<ItemListContainer
               products={products}
               category={"impulsivos"} />} 
           />
           <Route 
-            path="/productos/impulsivos/:id" 
+            path="/cursoReact/productos/impulsivos/:id" 
             element={<ItemDetail />}
           />
           <Route 
-            path="/productos/todos"
+            path="/cursoReact/productos/todos"
             element={<>
               <ItemListContainer
                 products={products}
@@ -97,7 +97,7 @@ function App() {
             </>} 
           />
           <Route 
-            path="/carrito"
+            path="/cursoReact/carrito"
             element={<CartListContainer 
               carts={carts}
               setCarts={setCarts} />}
