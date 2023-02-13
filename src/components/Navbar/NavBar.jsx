@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,7 +9,7 @@ import CartWidget from './CartWidget';
 
 
 function NavBar() {
-  
+
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -21,11 +22,6 @@ function NavBar() {
           <Navbar.Collapse className='justify-content-end text-end' id="basic-navbar-nav">
             <Nav>
               <NavDropdown className='text-secondary fw-bold' title="Nuestros Productos" id="basic-nav-dropdown">
-{/*           <NavDropdown.Item                 
-                  <Link to='/productos/servido'>
-                    <h6 className="dropdown-item">Servido</h6>
-                  </Link>
-                </NavDropdown.Item> */}
                 <NavDropdown.Item>
                   <Link to='/productos/baldes'>
                     <h6 className="dropdown-item">Baldes</h6>
@@ -41,11 +37,6 @@ function NavBar() {
                     <h6 className="dropdown-item">Impulsivos</h6>
                   </Link>
                 </NavDropdown.Item>
-{/*             <NavDropdown.Item>
-                  <Link to='/productos/cafeteria'>
-                    <h6 className="dropdown-item">Cafetería</h6>
-                  </Link> 
-                </NavDropdown.Item> */}
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
                   <Link to='/productos/todos'>
@@ -62,13 +53,12 @@ function NavBar() {
               <Nav.Link>
                 <Link to='/contacto' className='link-secondary fw-bold'>Contacto</Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link to='/modificar' className='link-secondary fw-bold'>Modificar Productos</Link>
-              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <CartWidget />
+        <Link to='/carrito'>
+          <CartWidget />
+        </Link>
       </Navbar>
     </>
   );

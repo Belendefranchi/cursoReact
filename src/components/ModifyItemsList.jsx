@@ -1,23 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import Form from './Form/Form'
 import ModifyItem from './ModifyItem'
 
-const ModifyProductsList = ({ products, setProducts }) => {
+const ModifyProductsList = ({ products, category, getProducts, setProducts, deleteProduct }) => {
     return (
-        <div>
-            <Form setProducts={ setProducts } />
-            <div className='d-flex justify-content-center flex-wrap p-4'>
-                {products.map((product) => {
-                    return (
-                        <>
-                            <Link to={`${product.id}`} key={product.id}>
-                                <ModifyItem key={product.id} product={product} />
-                            </Link>
-                        </>
-                    );
-                })}
-            </div>
+        <div className='d-flex justify-content-center flex-wrap p-4'>
+            {products.filter((product) => product.category === category).map((product) => {
+                return (
+                    <ModifyItem
+                        key={product.id}
+                        product={product}
+                        getProducts={getProducts}
+                        setProducts={setProducts}
+                        deleteProduct={deleteProduct}
+                    />
+                );
+            })}
         </div>
     )
 }

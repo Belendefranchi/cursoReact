@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../db/firebase-config'
 import styles from './itemDetail.module.css'
@@ -34,6 +34,9 @@ const ItemDetail = () => {
             <h4>{product.title}</h4>
             <p>{product.description}</p>
             <h5>$ {product.price}</h5>
+            <a href="javascript:history.go(-1)">
+                <button className='m-1 btn btn-success'>Volver</button>
+            </a>
         </div>
     )
 }

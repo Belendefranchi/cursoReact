@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 
 const ModifyItem = ( { product, deleteProduct } ) => {
+    console.log(product.id);
     return (
         <Card style={{ width: '20rem', height: '40rem', margin: '1rem' }}>
             <Card.Img className='img-fluid' variant="top" src={product.image} />
@@ -10,17 +11,10 @@ const ModifyItem = ( { product, deleteProduct } ) => {
                 <Card.Text className='p-1' style={{ height: '6rem', margin: '1rem' }}>{product.description}</Card.Text>
                 <Card.Title>$ {product.price}</Card.Title>
                 <Button className="m-1" variant="primary">Modificar</Button>
-                <Button className="m-1" variant="primary" onclick={deleteProduct}>Eliminar</Button>
+                <Button className="m-1" variant="primary" onclick={deleteProduct(product.id)}>Eliminar</Button>
             </Card.Body>
         </Card>
     )
 }
 
 export default ModifyItem
-
-/*         <>
-            <img src={product.image}></img>
-            <h4>{product.title}</h4>
-            <p>$ {product.price}</p>
-            <p>{product.description}</p>
-        </> */

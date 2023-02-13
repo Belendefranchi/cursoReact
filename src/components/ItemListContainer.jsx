@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import ItemList from './ItemList';
 
 function ItemListContainer({ products, category }) {
 
     return (
-      <div className='d-flex flex-wrap justify-content-center p-4'>
+      <div className='d-flex justify-content-center flex-wrap p-4'>
         {products.filter((product) => product.category === category).map((product) => {
           return (
-            <Link to={`${product.id}`} key={product.id}>
-                <ItemList key={product.id} product={product} />
-            </Link>
+            <ItemList
+              key={product.id}
+              product={product}
+            />
           );
         })}
       </div>

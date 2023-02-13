@@ -33,48 +33,50 @@ const HorizontalExample = ({ setProducts }) => {
   };
 
   return (
-    <Form onSubmit={createItem}>
-      <Form.Group as={Row} className="mb-3">
-        <Form.Label column sm={2}>
+    <Form className="m-3" onSubmit={createItem}>
+
+      <Form.Group as={Row} className="mb-3 justify-content-center">
+        <Form.Label className="text-start" column sm={1}>
           Título
         </Form.Label>
-        <Col sm={10}>
+        <Col sm={8}>
           <Form.Control type="text" value={inputTitle} onChange={(e) => setInputTitle(e.target.value)}/>
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3">
-        <Form.Label column sm={2}>
+      <Form.Group as={Row} className="mb-3 justify-content-center">
+        <Form.Label className="text-start" column sm={1}>
           Categoría
         </Form.Label>
-        <Col sm={10}>
+        <Col sm={8}>
           <Form.Control type="text" value={inputCategory} onChange={(e) => setInputCategory(e.target.value)}/>
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3">
-        <Form.Label column sm={2}>
+      <Form.Group as={Row} className="mb-3 justify-content-center">
+        <Form.Label className="text-start" column sm={1}>
           Descripción
         </Form.Label>
-        <Col sm={10}>
+        <Col sm={8}>
           <Form.Control type="text" value={inputDescription} onChange={(e) => setInputDescription(e.target.value)}/>
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3">
-        <Form.Label column sm={2}>
+      <Form.Group as={Row} className="mb-3 justify-content-center">
+        <Form.Label className="text-start" column sm={1}>
           Precio
         </Form.Label>
-        <Col sm={10}>
+        <Col sm={8}>
           <Form.Control type="number" min="1" value={inputPrice} onChange={(e) => setInputPrice(e.target.value)}/>
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3">
-        <Col sm={{ span: 10, offset: 2 }}>
+      <Form.Group as={Row} className="mb-3 justify-content-center">
+        <Col>
           <Button type="submit">Agregar Producto</Button>
         </Col>
       </Form.Group>
+
     </Form>
   );
 };
