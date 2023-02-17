@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -44,15 +44,9 @@ function NavBar() {
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link>
-                <Link to='/locales' className='link-secondary fw-bold'>Nuestros Locales</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to='/nosotros' className='link-secondary fw-bold'>Sobre Nosotros</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to='/contacto' className='link-secondary fw-bold'>Contacto</Link>
-              </Nav.Link>
+              <Nav.Link to='/locales' className='link-secondary fw-bold'>Nuestros Locales</Nav.Link>
+              <Nav.Link to='/nosotros' className='link-secondary fw-bold'>Sobre Nosotros</Nav.Link>
+              <Nav.Link to='/contacto' className='link-secondary fw-bold'>Contacto</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,14 +1,14 @@
 import './App.css'
-import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../db/firebase-config'
 import NavBar from './components/Navbar/NavBar'
 import Carousel from './components/Carousel'
 import Footer from './components/Footer'
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetail from './components/ItemDetail'
 import CartListContainer from './components/CartListContainer'
+import { useEffect, useState } from 'react'
+import { db } from '../db/firebase-config'
+import { collection, getDocs } from 'firebase/firestore'
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
     setProducts(docs);
     setLoading(false);
   };
-  
+
   const [carts, setCarts] = useState([]);
   const cartsCollectionRef = collection(db, "carts");
   
@@ -38,11 +38,8 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   if (loading) {
-    return <h1>Cargando...</h1>
-  }
-
-  console.log(products);
-  console.log(carts);
+    return <h2 className="m-4">Cargando...</h2>
+  };
 
   return (
       <div className="App">
@@ -56,6 +53,7 @@ function App() {
             path="/cursoReact/productos/baldes"
             element={<ItemListContainer
               products={products}
+              carts={carts}
               category={"baldes"} />} 
           />
           <Route 
@@ -66,6 +64,7 @@ function App() {
             path="/cursoReact/productos/postres"
             element={<ItemListContainer
               products={products}
+              carts={carts}
               category={"postres"} />} 
           />
           <Route 
@@ -76,6 +75,7 @@ function App() {
             path="/cursoReact/productos/impulsivos"
             element={<ItemListContainer
               products={products}
+              carts={carts}
               category={"impulsivos"} />} 
           />
           <Route 
@@ -98,11 +98,13 @@ function App() {
           />
           <Route 
             path="/cursoReact/carrito"
-            element={<CartListContainer 
+            element={<CartListContainer
               carts={carts}
-              setCarts={setCarts} />}
+              setCarts={setCarts}
+              getCartList={getCartList}
+              /* emptyCart={emptyCart} */ />}
           />
-          <Route path='*' element={<h4>404 Oops...</h4>} />
+          <Route path='*' element={<h4 className="m-4">404 Oops...</h4>} />
         </Routes>
         <Footer />
       </div>

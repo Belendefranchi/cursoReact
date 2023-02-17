@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemList from './ItemList';
 
-function ItemListContainer({ products, category }) {
+function ItemListContainer({ products, category, carts }) {
 
     return (
       <div className='d-flex justify-content-center flex-wrap p-4'>
@@ -10,6 +10,7 @@ function ItemListContainer({ products, category }) {
             <ItemList
               key={product.id}
               product={product}
+              carts={carts}
             />
           );
         })}

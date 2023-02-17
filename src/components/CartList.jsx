@@ -1,38 +1,30 @@
-import React, { useEffect } from 'react'
-import { Card } from 'react-bootstrap';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../db/firebase-config';
+import React from 'react'
+import { deleteDoc, doc } from 'firebase/firestore'
+import { Card } from 'react-bootstrap'
+import { BsTrash } from 'react-icons/bs'
+import { db } from '../../db/firebase-config'
 
-
-const CartList = ( { cart, setCarts } ) => {
-
-    const cartsCollectionRef = collection(db, "carts");
-    const getCartList = async () => {
-        const querySnapshot = await getDocs(cartsCollectionRef);
-        const docs = querySnapshot.docs.map((doc) => ({...doc.data()})); 
-        setCarts(docs);
-    };
-
-    useEffect(() => {
-        getCartList();
-    }, []);
-
-    const productTotal = () => {
-        return (parseFloat(cart.quantity) * parseFloat(cart.price))
-    };
+const CartList = ( { cart, getCartList, productTotal } ) => {
+    
+    const removeItem = async (product) => {
+        const productDocRef = doc(db, "carts", product)
+        await deleteDoc(productDocRef)
+        getCartList()
+    }
 
     return (
-        <div className='d-flex justify-content-center align-items-center'>
-            <Card style={{ width: '50rem', height: '3rem', margin: '0.5rem' }}>
+        <div className='w-100 d-flex justify-content-center align-items-center'>
+            <Card className='w-75 m-1'>
                 <Card.Body className='p-1 d-flex justify-content-center align-items-center'>
-                    <Card.Text className='fs-5 text-success my-0 w-50 text-start'>{cart.title}</Card.Text>
-                    <Card.Text className='fs-5 text-success my-0 w-25'>$ {cart.price}</Card.Text>
-                    <Card.Text className='fs-5 text-success my-0 w-25'>{cart.quantity}</Card.Text>
-                    <Card.Text className='fs-5 text-success my-0 w-25'>$ {productTotal()}</Card.Text>
+                    <Card.Text className='fs-5 my-0 px-2 w-50 text-start'>{cart.title}</Card.Text>
+                    <Card.Text className='fs-5 my-0 w-25'>$ {cart.price}</Card.Text>
+                    <Card.Text className='fs-5 my-0 w-25'>{cart.quantity}</Card.Text>
+                    <Card.Text className='fs-5 my-0 w-25 fw-bold'>$ {productTotal()}</Card.Text>
+                    <Card.Text className='fs-5 my-0 w-25'><BsTrash onClick={() => removeItem(cart.id)} /></Card.Text>
                 </Card.Body>
             </Card>
         </div>
     )
-};
+}
 
 export default CartList
