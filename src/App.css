@@ -4,11 +4,9 @@
   text-align: center;
 }
 
-.navbar {
-  padding: 0.1rem;
-}
-
 body{
+  margin-top: 0 !important;
+  margin-bottom: auto !important;
   place-items:unset;
 }
 
@@ -17,3 +15,6 @@ body{
   margin: 0%;
 }
 
+.bg{
+  background-color: #F2F1E4;
+}

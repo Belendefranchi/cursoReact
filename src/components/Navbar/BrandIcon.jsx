@@ -4,7 +4,7 @@ import logo from '/resources/logo.png';
 
 function BrandExample() {
     return (
-        <Navbar bg="light">
+        <Navbar className='bg'>
             <Container>
                 <Navbar.Brand href="/">
                 <img

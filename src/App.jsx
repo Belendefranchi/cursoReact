@@ -1,14 +1,14 @@
 import './App.css'
+import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../db/firebase-config'
 import NavBar from './components/Navbar/NavBar'
 import Carousel from './components/Carousel'
 import Footer from './components/Footer'
-import ItemListContainer from './components/ItemListContainer'
-import ItemDetail from './components/ItemDetail'
-import CartListContainer from './components/CartListContainer'
-import { useEffect, useState } from 'react'
-import { db } from '../db/firebase-config'
-import { collection, getDocs } from 'firebase/firestore'
+import ItemListContainer from './components/Products/ItemListContainer'
+import ItemDetail from './components/Products/ItemDetail'
+import CartListContainer from './components/Cart/CartListContainer'
 
 function App() {
 

@@ -12,7 +12,7 @@ function NavBar() {
 
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="bg w-100" expand="lg">
         <BrandIcon />
         <Container className="m-4">
         <Link to='/cursoReact/'>
