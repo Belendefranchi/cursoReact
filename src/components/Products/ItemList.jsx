@@ -11,34 +11,77 @@ const ItemList = ( { product, carts } ) => {
         const qtys = document.querySelectorAll(".qty");
         for (const qty of qtys){
             if(qty.id === id){
-                console.log(qty.value)
-                console.log(id);
+                console.log("qty.value: " + qty.value)
+                console.log("get select value: " + id);
                 return qty.value;
             }
         }
         return false;
     }
 
-    const addToCart = async (product) => {
-        const itemIndex = carts.findIndex((cart) => cart.product === product.id);
-        if (itemIndex >= 1) {
-            const cartsDocRef = doc(db, "carts", product.id);
-            const updateItem = {
-                product: product.id,
-                title: product.title,
-                price: product.price * getSelectValue(product.id),
-                quantity: product.quantity * getSelectValue(product.id)
-            };
-            await updateDoc(cartsDocRef, updateItem);
+    const addToCart = async (product, carts) => {
+
+/*         const itemIndex = carts.findIndex((cart) => cart.product === product.id);
+        if (itemIndex >= 1) { */
+        
+        const itemIndex = carts.find ((cart) => cart.product === product.id);
+        if(itemIndex){
+
+            console.log("El producto ya existe en el carrito")
+
+            {carts.map((cart) => {
+                const cartsDocRef = doc(db, "carts", cart.id)
+
+                console.log(cart.id)
+                console.log(cartsDocRef)
+
+                console.log("product.id: " + product.id)
+                console.log("product.title: " + product.title)
+                console.log("product.price: " + product.price)
+                console.log("product.quantity: " + getSelectValue(product.id))
+                
+                console.log("cart.id: " + cart.id)
+                console.log("cart.product: " + cart.product)
+                console.log("cart.title: " + cart.title)
+                console.log("cart.price: " + cart.price)
+                console.log("cart.quantity: " + cart.quantity)
+
+/*                 const updateItem = {
+                    product: product.id,
+                    title: product.title,
+                    price: cart.price + cart.price * getSelectValue(product.id),
+                    quantity: parseInt(cart.quantity) * getSelectValue(product.id)
+                };
+                updateDoc(cartsDocRef, updateItem); */
+            })}
         }else{
-            const cartsCollectionRef = collection(db, "carts");
-            const addItem = {
-                product: product.id,
-                title: product.title,
-                price: product.price,
-                quantity: getSelectValue(product.id)
-            };
-        await addDoc(cartsCollectionRef, addItem);
+
+            console.log("No existe el producto en el carrito");
+
+
+                const cartsCollectionRef = collection(db, "carts");
+
+                console.log(cartsCollectionRef)
+
+            
+/*                 console.log("cart.id: " + cart.id)
+                console.log("cart.product: " + cart.product)
+                console.log("cart.title: " + cart.title)
+                console.log("cart.price: " + cart.price)
+                console.log("cart.quantity: " + cart.quantity) */
+                
+                const addItem = {
+                    product: product.id,
+                    title: product.title,
+                    price: product.price,
+                    quantity: getSelectValue(product.id)
+                };
+
+            await addDoc(cartsCollectionRef, addItem);
+            console.log("product.id: " + product.id)
+            console.log("product.title: " + product.title)
+            console.log("product.price: " + product.price)
+            console.log("product.quantity: " + getSelectValue(product.id))
         }
     };
 
@@ -61,7 +104,7 @@ const ItemList = ( { product, carts } ) => {
                     <option value="5">5</option>
                     <option value="6">6</option>
                 </Form.Select>
-                <Button className='mx-1 w-75 btn' variant='success' id={product.id} onClick={() => addToCart(product)}>Agregar al carrito</Button>
+                <Button className='mx-1 w-75 btn' variant='success' id={product.id} onClick={() => addToCart(product, carts)}>Agregar al carrito</Button>
             </Card.Body>
         </Card>
     )

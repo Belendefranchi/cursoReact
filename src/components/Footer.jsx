@@ -14,7 +14,7 @@ const Footer = () => {
                             src={img}
                         />
                     </div>
-                    <div class="col m-0 p-0 styles.img">
+                    <div className="col m-0 p-0 styles.img">
 
                     </div>
                 </div>
