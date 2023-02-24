@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, Card, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { db } from '../../../db/firebase-config'
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
 
 
 const ItemList = ( { product, carts } ) => {
@@ -11,8 +10,6 @@ const ItemList = ( { product, carts } ) => {
         const qtys = document.querySelectorAll(".qty");
         for (const qty of qtys){
             if(qty.id === id){
-                console.log("qty.value: " + qty.value)
-                console.log("get select value: " + id);
                 return qty.value;
             }
         }
@@ -20,68 +17,44 @@ const ItemList = ( { product, carts } ) => {
     }
 
     const addToCart = async (product, carts) => {
+        const itemIndex = carts.find((cart) => cart.product === product.id);
+    
+        if (itemIndex) {
+        console.log("El producto ya existe en el carrito");
 
-/*         const itemIndex = carts.findIndex((cart) => cart.product === product.id);
-        if (itemIndex >= 1) { */
-        
-        const itemIndex = carts.find ((cart) => cart.product === product.id);
-        if(itemIndex){
-
-            console.log("El producto ya existe en el carrito")
-
-            {carts.map((cart) => {
-                const cartsDocRef = doc(db, "carts", cart.id)
-
-                console.log(cart.id)
-                console.log(cartsDocRef)
-
-                console.log("product.id: " + product.id)
-                console.log("product.title: " + product.title)
-                console.log("product.price: " + product.price)
-                console.log("product.quantity: " + getSelectValue(product.id))
-                
-                console.log("cart.id: " + cart.id)
-                console.log("cart.product: " + cart.product)
-                console.log("cart.title: " + cart.title)
-                console.log("cart.price: " + cart.price)
-                console.log("cart.quantity: " + cart.quantity)
-
-/*                 const updateItem = {
-                    product: product.id,
-                    title: product.title,
-                    price: cart.price + cart.price * getSelectValue(product.id),
-                    quantity: parseInt(cart.quantity) * getSelectValue(product.id)
-                };
-                updateDoc(cartsDocRef, updateItem); */
-            })}
-        }else{
-
-            console.log("No existe el producto en el carrito");
-
-
-                const cartsCollectionRef = collection(db, "carts");
-
-                console.log(cartsCollectionRef)
-
-            
-/*                 console.log("cart.id: " + cart.id)
-                console.log("cart.product: " + cart.product)
-                console.log("cart.title: " + cart.title)
-                console.log("cart.price: " + cart.price)
-                console.log("cart.quantity: " + cart.quantity) */
-                
-                const addItem = {
-                    product: product.id,
-                    title: product.title,
-                    price: product.price,
-                    quantity: getSelectValue(product.id)
-                };
-
-            await addDoc(cartsCollectionRef, addItem);
-            console.log("product.id: " + product.id)
-            console.log("product.title: " + product.title)
-            console.log("product.price: " + product.price)
-            console.log("product.quantity: " + getSelectValue(product.id))
+        console.log("product.id: " + product.id)
+        console.log("product.title: " + product.title)
+        console.log("product.price: " + product.price)
+        console.log("product.quantity: " + getSelectValue(product.id))
+    
+        // Buscar el documento correspondiente al producto
+        const querySnapshot = await getDocs(
+            query(collection(db, "carts"), where("product", "==", product.id))
+        );
+    
+        querySnapshot.forEach((cart) => {
+            // Actualizar la cantidad en el documento correspondiente
+            const cartsDocRef = doc(db, "carts", cart.id);
+            const updateItem = {
+            quantity: parseInt(cart.data().quantity) + parseInt(getSelectValue(product.id)),
+            };
+            updateDoc(cartsDocRef, updateItem);
+        });
+        } else {
+        console.log("No existe el producto en el carrito");
+    
+        const cartsCollectionRef = collection(db, "carts");
+        const addItem = {
+            product: product.id,
+            title: product.title,
+            price: product.price,
+            quantity: getSelectValue(product.id),
+        };
+        await addDoc(cartsCollectionRef, addItem);
+        console.log("product.id: " + product.id)
+        console.log("product.title: " + product.title)
+        console.log("product.price: " + product.price)
+        console.log("product.quantity: " + getSelectValue(product.id))
         }
     };
 
