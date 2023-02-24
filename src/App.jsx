@@ -30,11 +30,24 @@ function App() {
       const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
       setCarts(docs);
   };
+
+  const getCartQuantity = () => {
+    const label = document.querySelector('#cartQuantity')
+    const itemsQuantity = carts.reduce((total, cart) => {
+      return total + parseInt(cart.quantity)
+    }, 0);
+    if (itemsQuantity === 0){
+      label.innerText = null;
+    }else{
+      label.innerText = itemsQuantity;
+    }
+  };
   
   useEffect(() => {
     getProducts();
     getCartList();
-  }, []);
+    getCartQuantity();
+  }, [carts]);
 
   const [loading, setLoading] = useState(true);
   if (loading) {

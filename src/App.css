@@ -18,3 +18,12 @@ body{
 .bg{
   background-color: #F2F1E4;
 }
+
+.cart{
+  background-color: red;
+  color: white;
+  margin: 0rem 1rem 0rem 1rem;
+  border-radius: 1rem;
+  position: relative;
+  top: -0.1rem;
+}
