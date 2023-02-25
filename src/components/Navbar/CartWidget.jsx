@@ -2,10 +2,10 @@ import React from 'react'
 import { BsCart3 } from 'react-icons/bs'
 
 
-const CartWidget = () => {
+const CartWidget = ({ cartQuantity }) => {
   return (
     <div className='pt-0 d-flex flex-column'>
-      <label className="cart" id="cartQuantity"></label>
+      {cartQuantity > 0 && <span className="cart">{cartQuantity}</span>}
       <BsCart3 className="fs-2 me-4 link-secondary" />
     </div>
   )

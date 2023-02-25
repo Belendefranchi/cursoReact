@@ -8,7 +8,7 @@ import BrandIcon from './BrandIcon';
 import CartWidget from './CartWidget';
 
 
-function NavBar() {
+function NavBar({ cartQuantity }) {
 
   return (
     <>
@@ -51,7 +51,7 @@ function NavBar() {
           </Navbar.Collapse>
         </Container>
         <Link to='/cursoReact/carrito'>
-          <CartWidget />
+          <CartWidget cartQuantity={cartQuantity}/>
         </Link>
       </Navbar>
     </>

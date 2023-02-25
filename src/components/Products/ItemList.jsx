@@ -22,10 +22,10 @@ const ItemList = ( { product, carts } ) => {
         if (itemIndex) {
         console.log("El producto ya existe en el carrito");
 
-        console.log("product.id: " + product.id)
+/*         console.log("product.id: " + product.id)
         console.log("product.title: " + product.title)
         console.log("product.price: " + product.price)
-        console.log("product.quantity: " + getSelectValue(product.id))
+        console.log("product.quantity: " + getSelectValue(product.id)) */
     
         // Buscar el documento correspondiente al producto
         const querySnapshot = await getDocs(
@@ -51,10 +51,10 @@ const ItemList = ( { product, carts } ) => {
             quantity: getSelectValue(product.id),
         };
         await addDoc(cartsCollectionRef, addItem);
-        console.log("product.id: " + product.id)
+/*         console.log("product.id: " + product.id)
         console.log("product.title: " + product.title)
         console.log("product.price: " + product.price)
-        console.log("product.quantity: " + getSelectValue(product.id))
+        console.log("product.quantity: " + getSelectValue(product.id)) */
         }
     };
 

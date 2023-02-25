@@ -22,6 +22,17 @@ function App() {
     setLoading(false);
   };
 
+  // Define el estado para almacenar la cantidad del carrito
+  const [cartQuantity, setCartQuantity] = useState(0);
+
+  // Actualiza la cantidad del carrito cada vez que se agrega o se elimina un elemento del carrito
+  const updateCartQuantity = (carts) => {
+    const itemsQuantity = carts.reduce((total, cart) => {
+      return total + parseInt(cart.quantity)
+    }, 0);
+    setCartQuantity(itemsQuantity);
+  };
+
   const [carts, setCarts] = useState([]);
   const cartsCollectionRef = collection(db, "carts");
   
@@ -29,25 +40,27 @@ function App() {
       const querySnapshot = await getDocs(cartsCollectionRef);
       const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
       setCarts(docs);
+      updateCartQuantity(docs);
   };
 
-  const getCartQuantity = () => {
+/*   const getCartQuantity = () => {
     const label = document.querySelector('#cartQuantity')
     const itemsQuantity = carts.reduce((total, cart) => {
       return total + parseInt(cart.quantity)
     }, 0);
-    if (itemsQuantity === 0){
-      label.innerText = null;
+    console.log(itemsQuantity);
+    if (itemsQuantity !== 0){
+      label.innerText = itemsQuantity
     }else{
-      label.innerText = itemsQuantity;
+      label.innerText = null
     }
-  };
+  }; */
   
   useEffect(() => {
     getProducts();
     getCartList();
-    getCartQuantity();
-  }, [carts]);
+  }, []);
+
 
   const [loading, setLoading] = useState(true);
   if (loading) {
@@ -56,7 +69,7 @@ function App() {
 
   return (
       <div className="App">
-        <NavBar />
+        <NavBar cartQuantity={cartQuantity} />
         <Routes>
           <Route 
             path="/cursoReact/" 
