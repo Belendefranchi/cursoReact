@@ -12,9 +12,11 @@ import CartListContainer from './components/Cart/CartListContainer'
 
 function App() {
 
+  // Define el estado para almacenar los productos
   const [products, setProducts] = useState([]);
   const productsCollectionRef = collection(db, "products");
   
+  // Obtiene los productos de la base de datos
   const getProducts = async () => {
     const querySnapshot = await getDocs(productsCollectionRef);
     const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
@@ -31,8 +33,10 @@ function App() {
       return total + parseInt(cart.quantity)
     }, 0);
     setCartQuantity(itemsQuantity);
+    console.log(cartQuantity);
   };
 
+  // Define el estado para almacenar los productos del carrito
   const [carts, setCarts] = useState([]);
   const cartsCollectionRef = collection(db, "carts");
   
@@ -41,20 +45,8 @@ function App() {
       const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
       setCarts(docs);
       updateCartQuantity(docs);
+      console.log(carts);
   };
-
-/*   const getCartQuantity = () => {
-    const label = document.querySelector('#cartQuantity')
-    const itemsQuantity = carts.reduce((total, cart) => {
-      return total + parseInt(cart.quantity)
-    }, 0);
-    console.log(itemsQuantity);
-    if (itemsQuantity !== 0){
-      label.innerText = itemsQuantity
-    }else{
-      label.innerText = null
-    }
-  }; */
   
   useEffect(() => {
     getProducts();
@@ -80,6 +72,8 @@ function App() {
             element={<ItemListContainer
               products={products}
               carts={carts}
+              getCartList={getCartList}
+              updateCartQuantity={updateCartQuantity}
               category={"baldes"} />} 
           />
           <Route 
@@ -91,6 +85,7 @@ function App() {
             element={<ItemListContainer
               products={products}
               carts={carts}
+              updateCartQuantity={updateCartQuantity}
               category={"postres"} />} 
           />
           <Route 
@@ -102,6 +97,7 @@ function App() {
             element={<ItemListContainer
               products={products}
               carts={carts}
+              updateCartQuantity={updateCartQuantity}
               category={"impulsivos"} />} 
           />
           <Route 
