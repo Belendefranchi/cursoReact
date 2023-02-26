@@ -5,10 +5,10 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../db/firebase-config'
 import NavBar from './components/Navbar/NavBar'
 import Carousel from './components/Carousel'
-import Footer from './components/Footer'
 import ItemListContainer from './components/Products/ItemListContainer'
-import ItemDetail from './components/Products/ItemDetail'
+import ItemDetailContainer from './components/Products/ItemDetailContainer'
 import CartListContainer from './components/Cart/CartListContainer'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -68,56 +68,30 @@ function App() {
             element={<Carousel />} 
           />
           <Route 
-            path="/cursoReact/productos/baldes"
+            path="/cursoReact/productos/:category"
             element={<ItemListContainer
               products={products}
               carts={carts}
               getCartList={getCartList}
               updateCartQuantity={updateCartQuantity}
-              category={"baldes"} />} 
+            />} 
           />
           <Route 
+            path="/cursoReact/productos/:category/:id"
+            element={<ItemDetailContainer />}
+          />
+{/*           <Route 
             path="/cursoReact/productos/baldes/:id" 
             element={<ItemDetail />}
-          />
-          <Route
-            path="/cursoReact/productos/postres"
-            element={<ItemListContainer
-              products={products}
-              carts={carts}
-              updateCartQuantity={updateCartQuantity}
-              category={"postres"} />} 
           />
           <Route 
             path="/cursoReact/productos/postres/:id" 
             element={<ItemDetail />}
           />
           <Route 
-            path="/cursoReact/productos/impulsivos"
-            element={<ItemListContainer
-              products={products}
-              carts={carts}
-              updateCartQuantity={updateCartQuantity}
-              category={"impulsivos"} />} 
-          />
-          <Route 
             path="/cursoReact/productos/impulsivos/:id" 
             element={<ItemDetail />}
-          />
-          <Route 
-            path="/cursoReact/productos/todos"
-            element={<>
-              <ItemListContainer
-                products={products}
-                category={"baldes"} />
-              <ItemListContainer
-                products={products}
-                category={"postres"} />
-              <ItemListContainer
-                products={products}
-                category={"impulsivos"} />
-            </>} 
-          />
+          /> */}
           <Route 
             path="/cursoReact/carrito"
             element={<CartListContainer

@@ -5,11 +5,6 @@ import { db } from '../../../db/firebase-config'
 import styles from './itemDetail.module.css'
 
 const ItemDetail = () => {
-
-    /* const { title } = useParams();
-    const category = useLocation().pathname.split("/")[1];
-    const items = data[category];
-    const item = items.find((item) => item.title === title); */
     
     const { id } = useParams();
     const [product, setProduct] = useState({});
