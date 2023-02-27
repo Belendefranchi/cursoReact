@@ -21,7 +21,8 @@ function App() {
   const getProducts = async () => {
     const querySnapshot = await getDocs(productsCollectionRef);
     const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
-    setProducts(docs);
+    setTimeout(setProducts(docs), 20000);
+    console.log("Han pasado 20 segundos");
     setLoading(false);
   };
 
@@ -48,6 +49,8 @@ function App() {
       updateCartQuantity(docs);
       console.log(carts);
   };
+
+  // const emptyCart = async () => {}
   
   useEffect(() => {
     getProducts();
