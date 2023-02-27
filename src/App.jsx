@@ -5,6 +5,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../db/firebase-config'
 import NavBar from './components/Navbar/NavBar'
 import Carousel from './components/Carousel'
+import Spinner from 'react-bootstrap/Spinner';
 import ItemListContainer from './components/Products/ItemListContainer'
 import ItemDetailContainer from './components/Products/ItemDetailContainer'
 import CartListContainer from './components/Cart/CartListContainer'
@@ -56,7 +57,14 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   if (loading) {
-    return <h2 className="m-4">Cargando...</h2>
+    return (
+      <>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden"></span>
+        </Spinner>
+        <h2 className="m-4">Cargando...</h2>
+      </>
+    )
   };
 
   return (
@@ -80,18 +88,6 @@ function App() {
             path="/cursoReact/productos/:category/:id"
             element={<ItemDetailContainer />}
           />
-{/*           <Route 
-            path="/cursoReact/productos/baldes/:id" 
-            element={<ItemDetail />}
-          />
-          <Route 
-            path="/cursoReact/productos/postres/:id" 
-            element={<ItemDetail />}
-          />
-          <Route 
-            path="/cursoReact/productos/impulsivos/:id" 
-            element={<ItemDetail />}
-          /> */}
           <Route 
             path="/cursoReact/carrito"
             element={<CartListContainer
