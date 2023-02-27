@@ -62,14 +62,14 @@ const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
     };
 
     return (
-        <Card style={{ width: '20rem', height: '46rem', margin: '1rem' }}>
+        <Card className='m-2'>
             <Link to={`${product.id}`} key={product.id}>
                 <Card.Link className='text-reset'>
-                    <Card.Img className='img-fluid' variant="top" src={product.image} />
+                    <Card.Img className='img-fluid p-0 m-0' variant="top" src={product.image} />
                     <Card.Body>
-                        <Card.Title className='fs-3 text-success'>{product.title}</Card.Title>
-                        <Card.Text className='p-1 text-secondary' style={{ height: '6rem', margin: '1rem' }}>{product.description}</Card.Text>
-                        <Card.Title className='p-1 fs-3 text-success'>$ {product.price}</Card.Title>
+                        <Card.Title className='fs-5 text-secondary'>{product.title}</Card.Title>
+                        {/* <Card.Text className='p-1 text-secondary' style={{ height: '6rem', margin: '1rem' }}>{product.description}</Card.Text> */}
+                        <Card.Title className='p-1 fs-4 fw-bold text-secondary'>$ {product.price}</Card.Title>
                     </Card.Body>
                 </Card.Link>
             </Link>
