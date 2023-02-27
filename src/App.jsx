@@ -60,7 +60,7 @@ function App() {
     return (
       <>
         <Spinner animation="border" role="status">
-          <span className="visually-hidden"></span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
         <h2 className="m-4">Cargando...</h2>
       </>
