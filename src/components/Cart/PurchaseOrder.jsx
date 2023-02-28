@@ -1,6 +1,7 @@
 import { addDoc, collection } from 'firebase/firestore';
 import React from 'react'
-import { db } from '../../../db/firebase-config';
+import { db } from '../../../db/firebase-config'
+import Form from '../Form/Form'
 
 const PurchaseOrder = ({ carts }) => {
 
@@ -21,7 +22,7 @@ const PurchaseOrder = ({ carts }) => {
   purchase();
   return (
     <div>
-      <h1>hola</h1>
+      <Form />
     </div>
   )
 }
