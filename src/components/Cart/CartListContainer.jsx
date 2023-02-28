@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import CartList from './CartList';
 
 function CartListContainer({ carts, getCartList }) {
@@ -44,12 +45,15 @@ function CartListContainer({ carts, getCartList }) {
         </Card>
         <div className='m-5 d-flex flex-row justify-content-center'>
           <Button className='mx-1 btn' variant='success' onClick={() => emptyCart()}>Vaciar Carrito</Button>
-          <Button className='mx-1 btn' variant='success' onClick={() => purchaseOrder()}>Finalizar compra</Button>
+          <Link to='/cursoReact/purchase'>
+            <Button className='mx-1 btn' variant='success'>Finalizar compra</Button>
+          </Link>
         </div>
       </>
     </div>
   )
 }
+
 
 export default CartListContainer
 

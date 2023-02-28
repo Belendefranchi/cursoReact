@@ -10,6 +10,7 @@ import ItemListContainer from './components/Products/ItemListContainer'
 import ItemDetailContainer from './components/Products/ItemDetailContainer'
 import CartListContainer from './components/Cart/CartListContainer'
 import Footer from './components/Footer'
+import PurchaseOrder from './components/Cart/PurchaseOrder'
 
 function App() {
 
@@ -21,8 +22,7 @@ function App() {
   const getProducts = async () => {
     const querySnapshot = await getDocs(productsCollectionRef);
     const docs = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})); 
-    setTimeout(setProducts(docs), 20000);
-    console.log("Han pasado 20 segundos");
+    setProducts(docs);
     setLoading(false);
   };
 
@@ -99,7 +99,11 @@ function App() {
               getCartList={getCartList}
               /* emptyCart={emptyCart} */ />}
           />
-          <Route path='*' element={<h4 className="m-4">404 Oops...</h4>} />
+          <Route
+            path="/cursoReact/purchase"
+            element={<PurchaseOrder carts={carts} />}
+          />
+          {/* <Route path='*' element={<h4 className="m-4">404 Oops...</h4>} /> */}
         </Routes>
 {/*         <Footer /> */}
       </div>

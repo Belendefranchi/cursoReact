@@ -75,7 +75,6 @@ const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
                 <Card.Body>
                     <Card.Img className='img-fluid' variant="top" src={product.image} />
                     <Card.Title className='fs-5 text-secondary'>{product.title}</Card.Title>
-                    {/* <Card.Text className='p-1 text-secondary' style={{ height: '6rem', margin: '1rem' }}>{product.description}</Card.Text> */}
                     <Card.Title className='p-1 fs-4 fw-bold text-secondary'>$ {product.price}</Card.Title>
                     <Link to={`${product.id}`} key={product.id}>
                         <Button className='mx-1 w-75 btn' variant='success'>Ver más</Button>
