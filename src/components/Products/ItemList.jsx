@@ -19,19 +19,17 @@ const ItemList = ({ products, category, carts, getCartList, updateCartQuantity }
     });
     return (
       <div className='d-flex justify-content-center flex-wrap p-4'>
-            {sortedProducts.map((product) => (
-              setTimeout(() => {
-                return (
-                  <Item
-                    key={product.id}
-                    product={product}
-                    carts={carts}
-                    getCartList={getCartList}
-                    updateCartQuantity={updateCartQuantity}
-                  />
-                );
-              }, 2000)
-            ))}
+            {sortedProducts.map((product) => {
+              return (
+                <Item
+                  key={product.id}
+                  product={product}
+                  carts={carts}
+                  getCartList={getCartList}
+                  updateCartQuantity={updateCartQuantity}
+                />
+              );
+            })}
       </div>
     );
   }else{
