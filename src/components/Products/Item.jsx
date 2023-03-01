@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
     
-    
     const getSelectValue = (id) =>{
         const qtys = document.querySelectorAll(".qty");
         for (const qty of qtys){

@@ -46,7 +46,7 @@ function CartListContainer({ carts, getCartList }) {
         <div className='m-5 d-flex flex-row justify-content-center'>
           <Button className='mx-1 btn' variant='success' onClick={() => emptyCart()}>Vaciar Carrito</Button>
           <Link to='/cursoReact/purchase'>
-            <Button className='mx-1 btn' variant='success'>Finalizar compra</Button>
+            <Button className='mx-1 btn' variant='success'>Continuar compra</Button>
           </Link>
         </div>
       </>
