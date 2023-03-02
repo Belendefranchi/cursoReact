@@ -20,8 +20,9 @@ function CartListContainer({ carts, getCartList }) {
   return(
 
     <div className='d-flex flex-column justify-content-center align-items-center'>
+      <h2 className='mt-4 mb-5'>Carrito de compra</h2>
 
-      {carts.length === 0 && <h2 className="m-4">El carrito esta vacío</h2>}
+      {carts.length === 0 && <h5 className="m-4">Ooopss... el carrito esta vacío</h5>}
       
       {carts.map((cart) => {
         const productTotal = () => {
