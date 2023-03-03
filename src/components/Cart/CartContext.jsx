@@ -1,5 +1,5 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import React, { createContext, useState } from 'react';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { db } from '../../../db/firebase-config';
 
 export const CartContext = createContext();
@@ -84,13 +84,17 @@ export const CartProvider = ({ children }) => {
     updateCartQuantity(carts);
 };
 
+
   // Cuenta la cantidad de productos en el carrito
   const itemsQuantity = carts.reduce((total, cart) => {
     return total + parseInt(cart.quantity)
   }, 0);
   
   // Actualiza la cantidad del carrito cada vez que se agrega o se elimina un elemento del carrito
-  const updateCartQuantity = (itemsQuantity) => {
+  const updateCartQuantity = (carts) => {
+    const itemsQuantity = carts.reduce((total, cart) => {
+      return total + parseInt(cart.quantity)
+    }, 0);
     setCartQuantity(itemsQuantity);
     console.log(cartQuantity);
   };
@@ -116,7 +120,7 @@ export const CartProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ carts, setCarts, cartQuantity, setCartQuantity, updateCartQuantity, addToCart, getCartList, cartTotal, removeItem, emptyCart,  }}>
+    <CartContext.Provider value={{ carts, setCarts, cartQuantity, setCartQuantity, smShow, setSmShow, updateCartQuantity, addToCart, getCartList, itemsQuantity, cartTotal, removeItem, emptyCart }}>
       {children}
     </CartContext.Provider>
   );

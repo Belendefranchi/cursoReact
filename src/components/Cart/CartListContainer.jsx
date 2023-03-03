@@ -16,15 +16,6 @@ function CartListContainer({ carts }) {
     getCartList()
   }, []);
 
-  
-
-/*   const itemsQuantity = carts.reduce((total, cart) => {
-    return total + parseInt(cart.quantity)
-  }, 0);
-
-  const cartTotal = carts.reduce((total, cart) => {
-    return total + parseInt(cart.quantity)*parseFloat(cart.price)
-  }, 0).toFixed(2); */
 
   if (carts.length === 0) {
     return <h2 className="m-4">Ooopss... el carrito esta vacío</h2>;
@@ -40,7 +31,6 @@ function CartListContainer({ carts }) {
               <CartList
                 key={cart.id}
                 cart={cart}
-                getCartList={getCartList}
                 productTotal={productTotal}
               />
           );

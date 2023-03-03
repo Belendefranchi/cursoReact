@@ -1,21 +1,11 @@
 import React, { useContext } from 'react'
-import { deleteDoc, doc } from 'firebase/firestore'
 import { Card } from 'react-bootstrap'
 import { BsTrash } from 'react-icons/bs'
-import { db } from '../../../db/firebase-config'
 import { CartContext } from './CartContext'
 
-const CartList = ( { cart } ) => {
+const CartList = ( { cart, productTotal } ) => {
 
     const { removeItem } = useContext(CartContext);
-    const { productTotal } = useContext(CartContext);
-
-    
-/*     const removeItem = async (product) => {
-        const productDocRef = doc(db, "carts", product)
-        await deleteDoc(productDocRef)
-        getCartList()
-    } */
 
     return (
         <div className='w-100 d-flex justify-content-center align-items-center'>
@@ -24,7 +14,7 @@ const CartList = ( { cart } ) => {
                     <Card.Text className='fs-5 my-0 px-2 w-50 text-start'>{cart.title}</Card.Text>
                     <Card.Text className='fs-5 my-0 w-25'>$ {cart.price}</Card.Text>
                     <Card.Text className='fs-5 my-0 w-25'>{cart.quantity}</Card.Text>
-                    <Card.Text className='fs-5 my-0 w-25 fw-bold'>$ {productTotal}</Card.Text>
+                    <Card.Text className='fs-5 my-0 w-25 fw-bold'>$ {productTotal()}</Card.Text>
                     <Card.Text className='fs-5 my-0 w-25'><BsTrash onClick={() => removeItem(cart.id)} /></Card.Text>
                 </Card.Body>
             </Card>

@@ -2,16 +2,23 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { db } from '../../../db/firebase-config'
-import { collection, addDoc, getDoc } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { Modal, Table } from 'react-bootstrap';
+import { CartContext } from './CartContext';
+import { Navigate } from 'react-router-dom';
 
-const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
-
+const PurchaseOrder = ({ carts }) => {
+  
+  const { cartQuantity } = useContext(CartContext);
+  const { cartTotal } = useContext(CartContext);
+  const { emptyCart } = useContext(CartContext);
+  
   const [showModal, setShowModal] = useState(false);
-
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  
   const [inputName, setInputName] = useState("");
   const [inputLastName, setInputLastName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
@@ -19,10 +26,6 @@ const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
   const [inputCity, setInputCity] = useState("");
   const [inputState, setInputState] = useState("");
   const [inputPayment, setInputPayment] = useState("");
-
-  const cartTotal = carts.reduce((total, cart) => {
-    return total + parseInt(cart.quantity)*parseFloat(cart.price)
-  }, 0).toFixed(2);
 
   const handlePurchase = (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
         e_Total: cartTotal,
       };
       const ordersCollectionRef = collection(db, "orders");
-      await addDoc(ordersCollectionRef, form);
+      await addDoc(ordersCollectionRef, form).then(({ id }) => alert("Numero de orden: " + id));
       
       console.log("Compra realizada con éxito");
       
@@ -53,6 +56,7 @@ const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
       setInputState("");
       
       setShowModal(false);
+      setShouldRedirect(true);
       
     }else{
       setShowModal(false);
@@ -143,8 +147,9 @@ const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
               ))}
             </Form.Group>
             <Form.Group as={Row} className="my-4">
-              <Col sm={10} className="d-flex justify-content-end">
-                <Button className="btn btn-success" type="submit" onClick={handlePurchase}>Finalizar pedido</Button>
+              <Col sm={10} className="d-flex justify-content-end ">
+                <Button className="mx-1 btn btn-success" type="button" onClick={() => {window.location.href(history.go(-1))}}>Volver</Button>
+                <Button className="mx-1 btn btn-success" type="submit" onClick={handlePurchase}>Finalizar pedido</Button>
               </Col>
             </Form.Group>
           </Form>
@@ -201,6 +206,7 @@ const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
             </Modal.Footer>
         </Modal>
       </div>
+      {shouldRedirect && <Navigate to="../cursoReact/" />}
     </>
   )
 };

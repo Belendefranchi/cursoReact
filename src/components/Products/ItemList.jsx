@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import Item from './Item';
 
-const ItemList = ({ products, category, carts, getCartList, updateCartQuantity }) => {
+const ItemList = ({ products, category, carts }) => {
 
   const allProducts = useLocation().pathname.split("/")[3];
   console.log(allProducts)
@@ -25,8 +25,6 @@ const ItemList = ({ products, category, carts, getCartList, updateCartQuantity }
                   key={product.id}
                   product={product}
                   carts={carts}
-                  getCartList={getCartList}
-                  updateCartQuantity={updateCartQuantity}
                 />
               );
             })}
@@ -41,8 +39,6 @@ const ItemList = ({ products, category, carts, getCartList, updateCartQuantity }
               key={product.id}
               product={product}
               carts={carts}
-              getCartList={getCartList}
-              updateCartQuantity={updateCartQuantity}
             />
           );
         })}

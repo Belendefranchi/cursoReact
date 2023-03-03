@@ -1,75 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Button, Card, Form, Modal } from 'react-bootstrap'
-import { db } from '../../../db/firebase-config'
-import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Cart/CartContext';
-
 
 const Item = ( { product, carts } ) => {
 
     const { addToCart } = useContext(CartContext);
-    
-/*     const getSelectValue = (id) =>{
-        const qtys = document.querySelectorAll(".qty");
-        for (const qty of qtys){
-            if(qty.id === id){
-                return qty.value;
-            }
-        }
-        return false;
-    } */
-
-    const [smShow, setSmShow] = useState(false);
-
-    const addModal = () => {
-        setSmShow(true);
-    }
-    
-/*    const addToCart = async (product, carts) => {
-        const itemIndex = carts.find((cart) => cart.product === product.id);
-    
-        if (itemIndex) {
-            console.log("El producto ya existe en el carrito");
-
-            console.log("product.id: " + product.id)
-            console.log("product.title: " + product.title)
-            console.log("product.price: " + product.price)
-            console.log("product.quantity: " + getSelectValue(product.id))
-        
-            // Buscar el documento correspondiente al producto
-            const querySnapshot = await getDocs(
-                query(collection(db, "carts"), where("product", "==", product.id))
-            );
-        
-            querySnapshot.forEach((cart) => {
-                // Actualizar la cantidad en el documento correspondiente
-                const cartsDocRef = doc(db, "carts", cart.id);
-                const updateItem = {
-                quantity: parseInt(cart.data().quantity) + parseInt(getSelectValue(product.id)),
-                };
-                updateDoc(cartsDocRef, updateItem);
-            });
-        } else {
-            console.log("No existe el producto en el carrito");
-
-            const cartsCollectionRef = collection(db, "carts");
-            const addItem = {
-                product: product.id,
-                title: product.title,
-                price: product.price,
-                quantity: getSelectValue(product.id),
-            };
-            await addDoc(cartsCollectionRef, addItem);
-            console.log("product.id: " + product.id)
-            console.log("product.title: " + product.title)
-            console.log("product.price: " + product.price)
-            console.log("product.quantity: " + getSelectValue(product.id))
-        }
-        addModal();
-        getCartList();
-        updateCartQuantity(carts);
-    }; */
+    const { smShow } = useContext(CartContext);
+    const { setSmShow } = useContext(CartContext);
 
     return (
         <>
