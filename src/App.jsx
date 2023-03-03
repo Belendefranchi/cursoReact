@@ -115,7 +115,7 @@ function App() {
           />
           <Route path='*' element={<h4 className="m-4">404 Oops...</h4>} />
         </Routes>
-{/*         <Footer /> */}
+        <Footer />
       </div>
   )
 }
