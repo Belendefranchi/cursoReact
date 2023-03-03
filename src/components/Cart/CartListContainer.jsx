@@ -1,21 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
 import CartList from './CartList';
 
-function CartListContainer({ carts, getCartList, emptyCart }) {
+function CartListContainer({ carts }) {
+
+  const { getCartList } = useContext(CartContext);
+  const { itemsQuantity } = useContext(CartContext);
+  const { cartTotal } = useContext(CartContext);
+  const { emptyCart } = useContext(CartContext);
+
 
   useEffect(() => {
     getCartList()
   }, []);
 
-  const itemsQuantity = carts.reduce((total, cart) => {
+  
+
+/*   const itemsQuantity = carts.reduce((total, cart) => {
     return total + parseInt(cart.quantity)
   }, 0);
 
   const cartTotal = carts.reduce((total, cart) => {
     return total + parseInt(cart.quantity)*parseFloat(cart.price)
-  }, 0).toFixed(2);
+  }, 0).toFixed(2); */
 
   if (carts.length === 0) {
     return <h2 className="m-4">Ooopss... el carrito esta vacío</h2>;

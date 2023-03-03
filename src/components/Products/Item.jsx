@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Card, Form, Modal } from 'react-bootstrap'
 import { db } from '../../../db/firebase-config'
 import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { Link } from 'react-router-dom';
+import { CartContext } from '../Cart/CartContext';
 
 
-const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
+const Item = ( { product, carts } ) => {
+
+    const { addToCart } = useContext(CartContext);
     
-    const getSelectValue = (id) =>{
+/*     const getSelectValue = (id) =>{
         const qtys = document.querySelectorAll(".qty");
         for (const qty of qtys){
             if(qty.id === id){
@@ -15,7 +18,7 @@ const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
             }
         }
         return false;
-    }
+    } */
 
     const [smShow, setSmShow] = useState(false);
 
@@ -23,7 +26,7 @@ const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
         setSmShow(true);
     }
     
-    const addToCart = async (product, carts) => {
+/*    const addToCart = async (product, carts) => {
         const itemIndex = carts.find((cart) => cart.product === product.id);
     
         if (itemIndex) {
@@ -66,7 +69,7 @@ const Item = ( { product, carts, getCartList, updateCartQuantity } ) => {
         addModal();
         getCartList();
         updateCartQuantity(carts);
-    };
+    }; */
 
     return (
         <>

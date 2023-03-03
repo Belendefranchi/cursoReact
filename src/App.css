@@ -27,3 +27,9 @@ body{
   position: relative;
   top: -0.1rem;
 }
+
+.box{
+  background-color: #f5d769;
+  padding: 10px;
+  border-radius: 0px 50px 50px 0px;
+}

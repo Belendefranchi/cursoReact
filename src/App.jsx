@@ -1,5 +1,5 @@
 import './App.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import { db } from '../db/firebase-config'
@@ -11,6 +11,7 @@ import ItemDetailContainer from './components/Products/ItemDetailContainer'
 import CartListContainer from './components/Cart/CartListContainer'
 import Footer from './components/Footer'
 import PurchaseOrder from './components/Cart/PurchaseOrder'
+import { CartContext } from './components/Cart/CartContext'
 
 
 function App() {
@@ -27,7 +28,15 @@ function App() {
     setLoading(false);
   };
 
-  // Define el estado para almacenar la cantidad del carrito
+  const { carts } = useContext(CartContext);
+  const { setCarts } = useContext(CartContext);
+  const { getCartList } = useContext(CartContext);
+  const { cartQuantity } = useContext(CartContext);
+  const { updateCartQuantity } = useContext(CartContext);
+  const { emptyCart } = useContext(CartContext);
+
+
+/*   // Define el estado para almacenar la cantidad del carrito
   const [cartQuantity, setCartQuantity] = useState(0);
 
   // Actualiza la cantidad del carrito cada vez que se agrega o se elimina un elemento del carrito
@@ -57,7 +66,7 @@ function App() {
       deleteDoc(productDocRef)
     })
     getCartList()
-  }
+  } */
   
   useEffect(() => {
     getProducts();
