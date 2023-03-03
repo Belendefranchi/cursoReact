@@ -31,7 +31,6 @@ function App() {
   const { carts } = useContext(CartContext);
   const { getCartList } = useContext(CartContext);
   const { cartQuantity } = useContext(CartContext);
-  const { updateCartQuantity } = useContext(CartContext);
   
   useEffect(() => {
     getProducts();
@@ -64,8 +63,6 @@ function App() {
             element={<ItemListContainer
               products={products}
               carts={carts}
-              getCartList={getCartList}
-              updateCartQuantity={updateCartQuantity}
             />} 
           />
           <Route 

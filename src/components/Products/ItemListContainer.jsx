@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router';
 import ItemList from './ItemList';
 
-function ItemListContainer({ products, carts, getCartList, updateCartQuantity }) {
+function ItemListContainer({ products, carts }) {
   
   const { category } = useParams();
 
@@ -11,8 +11,6 @@ function ItemListContainer({ products, carts, getCartList, updateCartQuantity })
       products={products}
       category={category}
       carts={carts}
-      getCartList={getCartList}
-      updateCartQuantity={updateCartQuantity}
     />
   )
 
