@@ -1,7 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import { db } from '../db/firebase-config'
 import NavBar from './components/Navbar/NavBar'
 import Carousel from './components/Carousel'
@@ -11,6 +11,7 @@ import ItemDetailContainer from './components/Products/ItemDetailContainer'
 import CartListContainer from './components/Cart/CartListContainer'
 import Footer from './components/Footer'
 import PurchaseOrder from './components/Cart/PurchaseOrder'
+
 
 function App() {
 
@@ -50,7 +51,13 @@ function App() {
       console.log(carts);
   };
 
-  // const emptyCart = async () => {}
+  const emptyCart = () => {
+    carts.forEach((cart) => {
+      const productDocRef = doc(db, "carts", cart.id)
+      deleteDoc(productDocRef)
+    })
+    getCartList()
+  }
   
   useEffect(() => {
     getProducts();
@@ -97,13 +104,16 @@ function App() {
               carts={carts}
               setCarts={setCarts}
               getCartList={getCartList}
-              /* emptyCart={emptyCart} */ />}
+              emptyCart={emptyCart} />}
           />
           <Route
             path="/cursoReact/purchase"
-            element={<PurchaseOrder carts={carts} />}
+            element={<PurchaseOrder
+              carts={carts}
+              cartQuantity={cartQuantity}
+              emptyCart={emptyCart} />}
           />
-          {/* <Route path='*' element={<h4 className="m-4">404 Oops...</h4>} /> */}
+          <Route path='*' element={<h4 className="m-4">404 Oops...</h4>} />
         </Routes>
 {/*         <Footer /> */}
       </div>

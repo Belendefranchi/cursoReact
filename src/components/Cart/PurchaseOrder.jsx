@@ -5,10 +5,10 @@ import Row from 'react-bootstrap/Row';
 import React from 'react'
 import { useState } from 'react'
 import { db } from '../../../db/firebase-config'
-import { collection, addDoc, getDocs } from 'firebase/firestore'
-import { Card, Modal, Table } from 'react-bootstrap';
+import { collection, addDoc, getDoc } from 'firebase/firestore'
+import { Modal, Table } from 'react-bootstrap';
 
-const PurchaseOrder = ({ carts }) => {
+const PurchaseOrder = ({ carts, cartQuantity, emptyCart }) => {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -20,25 +20,31 @@ const PurchaseOrder = ({ carts }) => {
   const [inputState, setInputState] = useState("");
   const [inputPayment, setInputPayment] = useState("");
 
+  const cartTotal = carts.reduce((total, cart) => {
+    return total + parseInt(cart.quantity)*parseFloat(cart.price)
+  }, 0).toFixed(2);
+
   const handlePurchase = (e) => {
     e.preventDefault();
     setShowModal(true);
   };
 
-  const handlePayment = async ( state ) => {
+  const handleCheckOut = async ( state ) => {
     if (state) {
       const form = {
         a_Usuario: ["Nombre: " + inputName, "Apellido: " + inputLastName, "E-mail: " + inputEmail, "Dirección: " + inputAddress, "Ciudad: " + inputCity, "Provincia: " + inputState],
         b_Pago: inputPayment,
         c_Cart: carts,
+        d_Items: cartQuantity,
+        e_Total: cartTotal,
       };
       const ordersCollectionRef = collection(db, "orders");
       await addDoc(ordersCollectionRef, form);
-      /* const data = await getDocs(ordersCollectionRef);
-      console.log(data); */
       
       console.log("Compra realizada con éxito");
       
+      emptyCart();
+
       setInputName("");
       setInputLastName("");
       setInputEmail("");
@@ -47,7 +53,7 @@ const PurchaseOrder = ({ carts }) => {
       setInputState("");
       
       setShowModal(false);
-
+      
     }else{
       setShowModal(false);
     }
@@ -59,45 +65,45 @@ const PurchaseOrder = ({ carts }) => {
       <div className='w-100'>
         <h2 className='mt-4 mb-5'>Finaliza tu compra</h2>
       </div>
-      <div className='d-flex'>
+      <div className='row d-flex'>
         {/*------------------------- FORM -------------------------*/}
-        <div className='w-75 ms-5 text-start'>
-          <h5 className='mb-5'>Para finalizar tu compra completa tus datos personales:</h5>
+        <div className='col-7 ms-5 text-start'>
+          <h5 className='mb-5'>Para finalizar el pedido completa tus datos personales:</h5>
           <Form className='d-flex flex-column' onSubmit={handlePurchase}>
             <Form.Group as={Row} className="mb-3">
               <Form.Label className="text-start" column sm={2}>Nombre: </Form.Label>
               <Col sm={8}>
-                <Form.Control type="text" value={inputName} onChange={(e) => setInputName(e.target.value)} />
+                <Form.Control type="text" value={inputName} onChange={(e) => setInputName(e.target.value)} required />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
               <Form.Label className="text-start" column sm={2}>Apellido: </Form.Label>
               <Col sm={8}>
-                <Form.Control type="text" value={inputLastName} onChange={(e) => setInputLastName(e.target.value)} />
+                <Form.Control type="text" value={inputLastName} onChange={(e) => setInputLastName(e.target.value)} required />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
               <Form.Label className="text-start" column sm={2}>E-mail: </Form.Label>
               <Col sm={8}>
-                <Form.Control type="text" value={inputEmail} onChange={(e) => setInputEmail(e.target.value)} />
+                <Form.Control type="email" value={inputEmail} onChange={(e) => setInputEmail(e.target.value)} required />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
               <Form.Label className="text-start" column sm={2}>Dirección: </Form.Label>
               <Col sm={8}>
-                <Form.Control type="text" min="1" value={inputAddress} onChange={(e) => setInputAddress(e.target.value)} />
+                <Form.Control type="text" min="1" value={inputAddress} onChange={(e) => setInputAddress(e.target.value)} required />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
               <Form.Label className="text-start" column sm={2}>Ciudad: </Form.Label>
               <Col sm={8}>
-                <Form.Control type="text" min="1" value={inputCity} onChange={(e) => setInputCity(e.target.value)} />
+                <Form.Control type="text" min="1" value={inputCity} onChange={(e) => setInputCity(e.target.value)} required />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
               <Form.Label className="text-start" column sm={2}>Provincia: </Form.Label>
               <Col sm={8}>
-                <Form.Control type="text" min="1" value={inputState} onChange={(e) => setInputState(e.target.value)} />
+                <Form.Control type="text" min="1" value={inputState} onChange={(e) => setInputState(e.target.value)} required />
               </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3 align-items-center">
@@ -138,14 +144,14 @@ const PurchaseOrder = ({ carts }) => {
             </Form.Group>
             <Form.Group as={Row} className="my-4">
               <Col sm={10} className="d-flex justify-content-end">
-                <Button className="btn btn-success" type="submit" onClick={handlePurchase}>Finalizar compra</Button>
+                <Button className="btn btn-success" type="submit" onClick={handlePurchase}>Finalizar pedido</Button>
               </Col>
             </Form.Group>
           </Form>
         </div>
         {/*------------------------- TABLE -------------------------*/}
-        <div className='w-50 me-5 text-start'>
-          <h5 className='mb-5'>Resumen de tu pedido</h5>
+        <div className='col-4 me-5 text-start'>
+          <h5 className='mb-5'>Resumen de tu pedido:</h5>
           <Table>
             <thead>
               <tr>
@@ -168,6 +174,13 @@ const PurchaseOrder = ({ carts }) => {
                 </tbody>
               );
             })}
+            <tbody>
+              <tr>
+                <th className='w-50 text-start'>TOTAL</th>
+                <th className='w-25 text-center'>{cartQuantity}</th>
+                <th className='w-25 text-end'>$ {cartTotal}</th>
+              </tr>
+            </tbody>
           </Table>
         </div>
       </div>
@@ -177,14 +190,14 @@ const PurchaseOrder = ({ carts }) => {
           show={showModal}
           onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
-              <Modal.Title>Tu Pedido:</Modal.Title>
+              <Modal.Title>Muchas gracias por realizar tu pedido!</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <p>En breves nos pondremos en contacto para finalizar la compra.</p>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => handlePayment(false)}>Cancelar</Button>
-              <Button variant="primary" onClick={() => handlePayment(true)}>Realizar pedido</Button>
+              <Button variant="success" onClick={() => handleCheckOut(true)}>Realizar pedido</Button>
+              <Button variant="secondary" onClick={() => handleCheckOut(false)}>Cancelar</Button>
             </Modal.Footer>
         </Modal>
       </div>
